@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emerald Electrical Contractors, Inc. | Syracuse & Central NY Commercial Electricians</title>
+    <meta name="description" content="Established in 1992. High quality commercial, industrial, and institutional electrical construction and service in Greater Central New York.">
+    <style>
+        :root {
+            --bg-dark: #06090e;
+            --card-dark: #0f172a;
+            --emerald: #10b981;
+            --emerald-glow: #34d399;
+            --emerald-dark: #047857;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-bottom: 70px;
+        }
+
+        @media(min-width: 768px) {
+            body { padding-bottom: 0; }
+        }
+
+        /* Top Alert Bar */
+        .top-bar {
+            background: linear-gradient(90deg, #06090e, #0f172a, #06090e);
+            color: var(--text-light);
+            padding: 10px 16px;
+            font-size: 0.875rem;
+            text-align: center;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(16, 185, 129, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .top-bar span {
+            color: var(--emerald-glow);
+            font-weight: 700;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--emerald-glow);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--emerald-glow);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+        }
+
+        /* Header */
+        header {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--emerald);
+        }
+
+        .header-phone {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            padding: 8px 16px;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .header-phone:hover {
+            background: var(--emerald);
+            border-color: var(--emerald);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 60px 20px 80px;
+            background: radial-gradient(circle at 50% 20%, rgba(16, 185, 129, 0.12) 0%, transparent 70%);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media(min-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1.1fr 0.9fr;
+            }
+        }
+
+        .pill-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--emerald-glow);
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @media(min-width: 768px) {
+            .hero h1 { font-size: 3.4rem; }
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        /* Hero Image Stack */
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: visible;
+        }
+
+        .main-img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            filter: brightness(0.9);
+        }
+
+        .overlay-badge {
+            position: absolute;
+            bottom: -20px;
+            left: -10px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--emerald);
+            padding: 14px 20px;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .overlay-badge strong {
+            display: block;
+            font-size: 1.2rem;
+            color: var(--emerald-glow);
+            line-height: 1;
+        }
+
+        .overlay-badge span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Glass Card */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            border-radius: var(--radius);
+            padding: 32px;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            transition: var(--transition);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(52, 211, 153, 0.3);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
+        }
+
+        .form-card h2 {
+            font-size: 1.6rem;
+            margin-bottom: 6px;
+            color: #fff;
+        }
+
+        .form-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--emerald-glow);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(6, 9, 14, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            color: #fff;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--emerald-glow);
+            box-shadow: 0 0 10px rgba(52, 211, 153, 0.2);
+            background: rgba(6, 9, 14, 0.9);
+        }
+
+        .form-group select option {
+            background: var(--card-dark);
+            color: #fff;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-dark));
+            color: #fff;
+            padding: 14px 24px;
+            border-radius: var(--radius);
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
+        }
+
+        /* Features Section */
+        .features-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media(min-width: 768px) {
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .feature-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border);
+            padding: 28px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(52, 211, 153, 0.3);
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--emerald-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .icon-box svg {
+            width: 26px;
+            height: 26px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Info Section */
+        .info-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(6, 9, 14, 0.9));
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: var(--radius);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        @media(min-width: 768px) {
+            .info-card {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .info-text h3 {
+            font-size: 1.3rem;
+            color: var(--emerald-glow);
+            margin-bottom: 6px;
+        }
+
+        .info-text p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 0.95rem;
+            color: #fff;
+            border-top: 1px solid var(--border);
+            padding-top: 16px;
+        }
+
+        @media(min-width: 768px) {
+            .contact-details {
+                border-top: none;
+                padding-top: 0;
+                border-left: 1px solid var(--border);
+                padding-left: 24px;
+                min-width: 260px;
+            }
+        }
+
+        /* Mobile Sticky CTA */
+        .mobile-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(6, 9, 14, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+
+        @media(min-width: 768px) {
+            .mobile-cta { display: none; }
+        }
+
+        .mobile-cta-text {
+            color: #fff;
+            font-size: 0.85rem;
+        }
+
+        .mobile-cta-text span {
+            display: block;
+            font-weight: 700;
+            color: var(--emerald-glow);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP ALERT BAR -->
+    <div class="top-bar">
+        <div class="pulse-dot"></div>
+        <span>Commercial, Industrial & Institutional Electrical Services</span> • Syracuse & Greater CNY
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">Emerald <span>Electrical Contractors</span></div>
+        <a href="tel:3154759607" class="header-phone">
+            📞 <span>(315) 475-9607</span>
+        </a>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-container">
+            <div>
+                <div class="pill-tag">
+                    ⚡ Established in 1992
+                </div>
+                <h1>High-Quality Commercial & Industrial Electrical Construction</h1>
+                <p>Dedicated to providing reliable, high-specification electrical construction and maintenance service across Greater Central New York.</p>
+                
+                <div class="hero-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1000&q=80" alt="Commercial Electrical Contracting Works" class="main-img">
+                    <div class="overlay-badge">
+                        <div>
+                            <strong>30+ Years</strong>
+                            <span>CNY Construction Legacy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BID REQUEST / CONTACT FORM -->
+            <div class="glass-card form-card">
+                <h2>Request a Project Bid</h2>
+                <p>Submit project details or request emergency commercial service.</p>
+                
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                    <input type="hidden" name="subject" value="New Bid Request - Emerald Electrical">
+
+                    <div class="form-group">
+                        <label for="name">Company / Contact Name</label>
+                        <input type="text" id="name" name="name" placeholder="Acme Construction Co." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(315) 555-0144" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Sector / Project Type</label>
+                        <select id="service" name="service">
+                            <option value="Commercial Construction">Commercial Construction</option>
+                            <option value="Industrial Electrical">Industrial Electrical & Controls</option>
+                            <option value="Institutional Facility">Institutional Facility Project</option>
+                            <option value="Service & Maintenance">Service & Emergency Repair</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="details">Project Scope (Optional)</label>
+                        <textarea id="details" name="details" rows="3" placeholder="Brief details regarding bid requirements or scope..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn">Submit Bid Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE CAPABILITIES -->
+    <section class="features-section">
+        <div class="section-header">
+            <h2>Core Contracting Services</h2>
+            <p>Comprehensive electrical power, controls, and infrastructure for Syracuse & Central NY</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                </div>
+                <h3>Commercial Power & Distribution</h3>
+                <p>Complete power system design, switchgear installation, lighting automation, and high-capacity electrical distribution for retail, office, and mixed-use builds.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                </div>
+                <h3>Industrial Controls & Systems</h3>
+                <p>Industrial wiring, motor controls, heavy machinery hookups, variable frequency drives, and automated facility power management.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <h3>Institutional Facilities</h3>
+                <p>High-spec electrical contracting for municipal buildings, educational institutions, healthcare facilities, and life-safety systems.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPANY HISTORY & CONTACT FOOTER -->
+    <section class="info-section">
+        <div class="info-card">
+            <div class="info-text">
+                <h3>Emerald Electrical Contractors, Inc.</h3>
+                <p>"Established in 1992, dedicated to providing high quality electrical construction and service to commercial, industrial and institutional users in the Greater Central New York area."</p>
+            </div>
+            <div class="contact-details">
+                <div>📍 116 Game Road, Syracuse, NY 13210</div>
+                <div>📞 Phone: (315) 475-9607</div>
+                <div>📠 Fax: (315) 475-9608</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MOBILE STICKY CTA -->
+    <div class="mobile-cta">
+        <div class="mobile-cta-text">
+            Commercial Electrical Needs?
+            <span>Call Emerald Direct</span>
+        </div>
+        <a href="tel:3154759607" class="btn" style="width: auto; padding: 10px 18px; font-size: 0.9rem;">(315) 475-9607</a>
+    </div>
+
+</body>
+</html>
