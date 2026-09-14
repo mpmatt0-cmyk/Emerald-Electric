@@ -1,867 +1,626 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emerald Electrical Contractors, Inc. | Syracuse & Central NY Commercial Electricians</title>
-    <meta name="description" content="Established in 1992. High quality commercial, industrial, and institutional electrical construction and service in Greater Central New York.">
+    <title>Emerald Electrical Contractors, Inc. | Commercial & Industrial Electrical Syracuse, NY</title>
+    <meta name="description" content="Established in 1992. High-quality commercial, industrial, and institutional electrical construction and service in Greater Central New York. Call (315) 475-9607.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            950: '#030508',
+                            900: '#06090e',
+                            800: '#0f172a',
+                            700: '#1e293b',
+                            600: '#334155',
+                        },
+                        emerald: {
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            900: '#064e3b',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        :root {
-            --bg-dark: #06090e;
-            --card-dark: #0f172a;
-            --emerald: #10b981;
-            --emerald-glow: #34d399;
-            --emerald-dark: #047857;
-            --text-light: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
-            --radius: 12px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-            padding-bottom: 70px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #06090e;
+            color: #f8fafc;
         }
 
-        @media(min-width: 768px) {
-            body { padding-bottom: 0; }
+        h1, h2, h3, .font-heading {
+            font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* Top Alert Bar */
-        .top-bar {
-            background: linear-gradient(90deg, #06090e, #0f172a, #06090e);
-            color: var(--text-light);
-            padding: 10px 16px;
-            font-size: 0.875rem;
-            text-align: center;
-            font-weight: 600;
-            border-bottom: 1px solid rgba(16, 185, 129, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .top-bar span {
-            color: var(--emerald-glow);
-            font-weight: 700;
-        }
-
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--emerald-glow);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--emerald-glow);
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
-        }
-
-        /* Header & Main Site Navigation */
-        header {
-            background: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(12px);
-            padding: 16px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 900;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: -0.5px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo span {
-            color: var(--emerald);
-        }
-
-        nav.site-nav {
-            display: none;
-            gap: 24px;
-            align-items: center;
-        }
-
-        @media(min-width: 992px) {
-            nav.site-nav {
-                display: flex;
-            }
-        }
-
-        nav.site-nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        nav.site-nav a:hover {
-            color: var(--emerald-glow);
-        }
-
-        .header-phone {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 700;
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.9rem;
-            background: rgba(16, 185, 129, 0.15);
-            border: 1px solid rgba(52, 211, 153, 0.3);
-            padding: 8px 16px;
-            border-radius: 50px;
-            transition: var(--transition);
-        }
-
-        .header-phone:hover {
-            background: var(--emerald);
-            border-color: var(--emerald);
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
-        }
-
-        /* Sub-Navigation Bar / Quick Jump Links */
-        .sub-nav {
-            background: #090d16;
-            border-bottom: 1px solid var(--border);
-            padding: 12px 20px;
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-
-        .sub-nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            padding: 6px 14px;
-            border-radius: 50px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: var(--transition);
-        }
-
-        .sub-nav a:hover {
-            color: #fff;
-            border-color: var(--emerald);
-            background: rgba(16, 185, 129, 0.1);
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            padding: 50px 20px 70px;
-            background: radial-gradient(circle at 50% 20%, rgba(16, 185, 129, 0.12) 0%, transparent 70%);
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        @media(min-width: 992px) {
-            .hero-container {
-                grid-template-columns: 1.1fr 0.9fr;
-            }
-        }
-
-        .pill-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--emerald-glow);
-            border: 1px solid rgba(52, 211, 153, 0.3);
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .hero h1 {
-            font-size: 2.4rem;
-            font-weight: 900;
-            line-height: 1.15;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        @media(min-width: 768px) {
-            .hero h1 { font-size: 3.4rem; }
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-            max-width: 600px;
-        }
-
-        /* Hero Image Stack */
-        .hero-image-wrapper {
-            position: relative;
-            border-radius: var(--radius);
-            overflow: visible;
-        }
-
-        .main-img {
-            width: 100%;
-            height: 380px;
-            object-fit: cover;
-            border-radius: var(--radius);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            filter: brightness(0.9);
-        }
-
-        .overlay-badge {
-            position: absolute;
-            bottom: -20px;
-            left: -10px;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(8px);
-            border: 1px solid var(--emerald);
-            padding: 14px 20px;
-            border-radius: var(--radius);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .overlay-badge strong {
-            display: block;
-            font-size: 1.2rem;
-            color: var(--emerald-glow);
-            line-height: 1;
-        }
-
-        .overlay-badge span {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Glass Card */
         .glass-card {
-            background: rgba(15, 23, 42, 0.85);
+            background: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(16px);
-            border-radius: var(--radius);
-            padding: 32px;
-            border: 1px solid var(--border);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            transition: var(--transition);
+            border: 1px solid rgba(16, 185, 129, 0.2);
         }
 
-        .glass-card:hover {
-            border-color: rgba(52, 211, 153, 0.3);
-            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
-        }
-
-        .form-card h2 {
-            font-size: 1.6rem;
-            margin-bottom: 6px;
-            color: #fff;
-        }
-
-        .form-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 24px;
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-            color: var(--emerald-glow);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 16px;
-            background: rgba(6, 9, 14, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius);
-            font-size: 1rem;
-            color: #fff;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--emerald-glow);
-            box-shadow: 0 0 10px rgba(52, 211, 153, 0.2);
-            background: rgba(6, 9, 14, 0.9);
-        }
-
-        .form-group select option {
-            background: var(--card-dark);
-            color: #fff;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--emerald), var(--emerald-dark));
-            color: #fff;
-            padding: 14px 24px;
-            border-radius: var(--radius);
-            font-weight: 700;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 1rem;
-            width: 100%;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
-        }
-
-        /* Features Section */
-        .features-section {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-            scroll-margin-top: 100px;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-header h2 {
-            font-size: 2rem;
-            margin-bottom: 8px;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-        }
-
-        @media(min-width: 768px) {
-            .features-grid {
-                grid-template-columns: repeat(3, 1fr);
+        /* Subdued Floating/Breathing Animation */
+        @keyframes floatBreathing {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-8px);
             }
         }
 
-        .feature-card {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid var(--border);
-            padding: 28px;
-            border-radius: var(--radius);
-            transition: var(--transition);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(52, 211, 153, 0.3);
-            background: rgba(15, 23, 42, 0.9);
-        }
-
-        .icon-box {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--emerald-glow);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .icon-box svg {
-            width: 26px;
-            height: 26px;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
-        }
-
-        .feature-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Detailed Services Section */
-        .services-detail-section {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
-            scroll-margin-top: 100px;
-        }
-
-        .services-list-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-        }
-
-        @media(min-width: 768px) {
-            .services-list-grid {
-                grid-template-columns: 1fr 1fr;
+        /* Subtle Glow Pulse Effect on Border */
+        @keyframes emeraldGlowPulse {
+            0%, 100% {
+                border-color: rgba(52, 211, 153, 0.3);
+                box-shadow: 0 0 15px rgba(52, 211, 153, 0.15);
+            }
+            50% {
+                border-color: rgba(52, 211, 153, 0.75);
+                box-shadow: 0 0 30px rgba(52, 211, 153, 0.4);
             }
         }
 
-        .service-detail-box {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid var(--border);
-            padding: 30px;
-            border-radius: var(--radius);
+        .animate-float {
+            animation: floatBreathing 6s ease-in-out infinite;
         }
 
-        .service-detail-box h3 {
-            color: var(--emerald-glow);
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .service-detail-box ul {
-            list-style: none;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .service-detail-box ul li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 8px;
-        }
-
-        .service-detail-box ul li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--emerald);
-            font-weight: bold;
-        }
-
-        /* Info Section */
-        .info-section {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
-            scroll-margin-top: 100px;
-        }
-
-        .info-card {
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(6, 9, 14, 0.9));
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: var(--radius);
-            padding: 32px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        @media(min-width: 768px) {
-            .info-card {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-
-        .info-text h3 {
-            font-size: 1.3rem;
-            color: var(--emerald-glow);
-            margin-bottom: 6px;
-        }
-
-        .info-text p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            font-size: 0.95rem;
-            color: #fff;
-            border-top: 1px solid var(--border);
-            padding-top: 16px;
-        }
-
-        @media(min-width: 768px) {
-            .contact-details {
-                border-top: none;
-                padding-top: 0;
-                border-left: 1px solid var(--border);
-                padding-left: 24px;
-                min-width: 260px;
-            }
-        }
-
-        /* Site Map Footer Links */
-        .sitemap-footer {
-            background: #04070c;
-            border-top: 1px solid var(--border);
-            padding: 40px 20px;
-            margin-top: 60px;
-        }
-
-        .sitemap-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 30px;
-        }
-
-        @media(max-width: 768px) {
-            .sitemap-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .sitemap-col h4 {
-            color: var(--emerald-glow);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-        }
-
-        .sitemap-col ul {
-            list-style: none;
-        }
-
-        .sitemap-col ul li {
-            margin-bottom: 8px;
-        }
-
-        .sitemap-col ul li a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        .sitemap-col ul li a:hover {
-            color: #fff;
-        }
-
-        /* Mobile Sticky CTA */
-        .mobile-cta {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(6, 9, 14, 0.95);
-            backdrop-filter: blur(12px);
-            padding: 12px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 1000;
-        }
-
-        @media(min-width: 768px) {
-            .mobile-cta { display: none; }
-        }
-
-        .mobile-cta-text {
-            color: #fff;
-            font-size: 0.85rem;
-        }
-
-        .mobile-cta-text span {
-            display: block;
-            font-weight: 700;
-            color: var(--emerald-glow);
+        .animate-glow-border {
+            animation: emeraldGlowPulse 4s ease-in-out infinite;
         }
     </style>
 </head>
-<body>
+<body class="antialiased selection:bg-emerald-500 selection:text-dark-900 pb-20 md:pb-0">
 
-    <!-- TOP ALERT BAR -->
-    <div class="top-bar">
-        <div class="pulse-dot"></div>
-        <span>Commercial, Industrial & Institutional Electrical Services</span> • Syracuse & Greater CNY
+    <!-- Top Contact Bar -->
+    <div class="bg-dark-800/90 border-b border-dark-700 text-slate-300 text-xs py-2 px-4">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center space-x-6">
+                <span class="flex items-center space-x-2">
+                    <i class="fa-solid fa-location-dot text-emerald-400"></i>
+                    <span>116 Game Road, Syracuse, NY 13210</span>
+                </span>
+                <span class="hidden sm:inline-flex items-center space-x-2">
+                    <i class="fa-solid fa-calendar-check text-emerald-400"></i>
+                    <span>Serving Central NY Since 1992</span>
+                </span>
+            </div>
+            <div class="flex items-center space-x-4 font-semibold">
+                <a href="tel:3154759607" class="hover:text-emerald-400 transition-colors flex items-center space-x-1.5">
+                    <i class="fa-solid fa-phone text-emerald-400"></i>
+                    <span>(315) 475-9607</span>
+                </a>
+            </div>
+        </div>
     </div>
 
-    <!-- MAIN HEADER WITH NAVIGATION -->
-    <header>
-        <a href="#home" class="logo">Emerald <span>Electrical Contractors</span></a>
-        
-        <nav class="site-nav">
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#about">About Us</a>
-            <a href="#contact">Request Bid</a>
+    <!-- Floating Glassmorphism Navbar -->
+    <header class="sticky top-4 z-50 px-4 max-w-7xl mx-auto">
+        <nav class="bg-dark-800/80 backdrop-blur-xl border border-emerald-500/20 rounded-2xl px-5 py-3 shadow-2xl flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#home" class="flex items-center space-x-3 group">
+                <div class="w-11 h-11 bg-gradient-to-br from-emerald-400 to-emerald-700 rounded-xl flex items-center justify-center text-dark-950 shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-bolt-lightning text-xl font-black"></i>
+                </div>
+                <div>
+                    <span class="font-heading font-bold text-lg sm:text-xl tracking-tight text-white block leading-none">EMERALD</span>
+                    <span class="text-[10px] font-semibold tracking-widest text-emerald-400 uppercase">Electrical Contractors, Inc.</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <a href="#home" class="hover:text-emerald-400 transition-colors">Home</a>
+                <a href="#capabilities" class="hover:text-emerald-400 transition-colors">Capabilities</a>
+                <a href="#services" class="hover:text-emerald-400 transition-colors">Services List</a>
+                <a href="#about" class="hover:text-emerald-400 transition-colors">About Emerald</a>
+                <a href="#contact" class="hover:text-emerald-400 transition-colors">Contact Us</a>
+            </div>
+
+            <!-- Standardized CTA -->
+            <div class="hidden sm:flex items-center">
+                <a href="#contact" class="bg-emerald-500 hover:bg-emerald-400 text-dark-950 font-bold px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-emerald-500/20 text-xs uppercase tracking-wider flex items-center space-x-2">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Contact Us</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white p-2" aria-label="Open menu">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
         </nav>
 
-        <a href="tel:3154759607" class="header-phone">
-            📞 <span>(315) 475-9607</span>
-        </a>
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden mt-2 bg-dark-800/95 border border-emerald-500/20 backdrop-blur-2xl rounded-2xl p-5 space-y-4 shadow-2xl">
+            <a href="#home" class="block text-slate-300 hover:text-emerald-400 font-medium py-1">Home</a>
+            <a href="#capabilities" class="block text-slate-300 hover:text-emerald-400 font-medium py-1">Capabilities</a>
+            <a href="#services" class="block text-slate-300 hover:text-emerald-400 font-medium py-1">Services List</a>
+            <a href="#about" class="block text-slate-300 hover:text-emerald-400 font-medium py-1">About Emerald</a>
+            <a href="#contact" class="block text-slate-300 hover:text-emerald-400 font-medium py-1">Contact Us</a>
+            <div class="pt-3 border-t border-dark-700 flex flex-col gap-2">
+                <a href="tel:3154759607" class="w-full text-center bg-dark-700 text-emerald-400 font-bold py-3 rounded-xl border border-emerald-500/30">
+                    <i class="fa-solid fa-phone mr-2"></i> (315) 475-9607
+                </a>
+            </div>
+        </div>
     </header>
 
-    <!-- QUICK JUMP SUB-NAV -->
-    <div class="sub-nav">
-        <a href="#home">Home</a>
-        <a href="#overview">Capabilities</a>
-        <a href="#services">Full Services List</a>
-        <a href="#about">About Emerald</a>
-        <a href="#contact">Request Bid / Contact</a>
-    </div>
-
-    <!-- HERO SECTION -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div>
-                <div class="pill-tag">
-                    ⚡ Established in 1992
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 lg:pt-32 lg:pb-24 px-4 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/30 px-4 py-1.5 rounded-full text-emerald-400 text-xs font-semibold uppercase tracking-widest">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Commercial & Industrial Electrical Experts</span>
                 </div>
-                <h1>High-Quality Commercial & Industrial Electrical Construction</h1>
-                <p>Dedicated to providing reliable, high-specification electrical construction and maintenance service across Greater Central New York.</p>
+
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-none">
+                    Powering Central NY Infrastructure <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-200">Since 1992.</span>
+                </h1>
+
+                <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed border-l-2 border-emerald-500/50 pl-4">
+                    Established in 1992, Emerald Electrical Contractors, Inc. is dedicated to providing high quality electrical construction and service to commercial, industrial and institutional users in the Greater Central New York area.
+                </p>
+
+                <div class="pt-4 flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                    <a href="#contact" class="bg-emerald-500 hover:bg-emerald-400 text-dark-950 font-extrabold px-8 py-4 rounded-xl shadow-xl shadow-emerald-500/25 transition-all text-center text-sm uppercase tracking-wider flex items-center justify-center space-x-3">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>Contact Us</span>
+                    </a>
+                    <a href="tel:3154759607" class="bg-dark-800 hover:bg-dark-700 border border-emerald-500/30 text-white font-bold px-8 py-4 rounded-xl transition-all text-center text-sm uppercase tracking-wider flex items-center justify-center space-x-3">
+                        <i class="fa-solid fa-phone text-emerald-400"></i>
+                        <span>(315) 475-9607</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Image Container with Smooth Scale Transition & Overlay Animated Spec Card -->
+            <div class="lg:col-span-5 relative">
+                <div class="relative rounded-3xl overflow-hidden border border-emerald-500/30 shadow-2xl group transition-all duration-500">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80" 
+                         alt="Commercial Power Distribution Panel with Organized Wires" 
+                         class="w-full h-[480px] object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                         onerror="this.src='https://placehold.co/800x1000/0f172a/34d399?text=Electrical+Power+Panel'">
+                    
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-80"></div>
+
+                    <!-- Overlay Spec Card: Subdued Floating & Glowing Border Animations -->
+                    <div class="absolute bottom-6 left-6 right-6 glass-card p-5 rounded-2xl animate-float animate-glow-border transition-all">
+                        <div class="flex items-center justify-between text-xs text-emerald-400 font-mono mb-2">
+                            <span class="flex items-center space-x-1.5">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                                <span>POWER DISTRIBUTION PANEL</span>
+                            </span>
+                            <span>480V / 3-PHASE</span>
+                        </div>
+                        <div class="text-white font-bold text-base mb-1">Precision Wire Management & Cable Routing</div>
+                        <p class="text-slate-300 text-xs">Engineered industrial breaker systems, motor control centers, and high-voltage switchgear installations.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Core Capabilities Grid -->
+    <section id="capabilities" class="py-20 bg-dark-800 border-t border-dark-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-emerald-400 font-extrabold text-xs uppercase tracking-widest">Core Capabilities</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white">Commercial, Industrial & Institutional</h2>
+                <p class="text-slate-400 text-sm sm:text-base">Targeted high-voltage power distribution, industrial automation, and critical facility maintenance.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Commercial Power -->
+                <div class="glass-card p-8 rounded-3xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center mb-6 border border-emerald-500/30">
+                            <!-- SVG Vector Icon: Commercial Building / Power -->
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-5a2 2 0 012-2h2a2 2 0 012 2v5m-6 0h6M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Commercial Power</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Complete turn-key electrical power distribution systems for commercial complexes, multi-tenant developments, and retail hubs.
+                        </p>
+                    </div>
+                    <a href="#contact" class="text-emerald-400 font-bold text-xs uppercase tracking-wider inline-flex items-center space-x-2 hover:text-emerald-300">
+                        <span>Contact Us</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Industrial Controls -->
+                <div class="glass-card p-8 rounded-3xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center mb-6 border border-emerald-500/30">
+                            <!-- SVG Vector Icon: Industrial Gears / Controls -->
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Industrial Controls</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Heavy power wiring, Motor Control Centers (MCC), machine tool integration, and process control wiring for manufacturing plants.
+                        </p>
+                    </div>
+                    <a href="#contact" class="text-emerald-400 font-bold text-xs uppercase tracking-wider inline-flex items-center space-x-2 hover:text-emerald-300">
+                        <span>Contact Us</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Institutional Facilities -->
+                <div class="glass-card p-8 rounded-3xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center mb-6 border border-emerald-500/30">
+                            <!-- SVG Vector Icon: Institutional / Healthcare -->
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-5a2 2 0 012-2h2a2 2 0 012 2v5m-6 0h6M12 7v4m-2-2h4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Institutional Facilities</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Critical standby power generation, hospital isolated power, higher education campus infrastructure, and municipal upgrades.
+                        </p>
+                    </div>
+                    <a href="#contact" class="text-emerald-400 font-bold text-xs uppercase tracking-wider inline-flex items-center space-x-2 hover:text-emerald-300">
+                        <span>Contact Us</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services List Section -->
+    <section id="services" class="py-20 bg-dark-900 border-t border-dark-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-emerald-400 font-bold text-xs uppercase tracking-widest block">Contracting Offerings</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Complete Electrical Services List</h2>
+                </div>
+                <p class="text-slate-400 text-sm max-w-md mt-2 md:mt-0">
+                    Engineered design-build construction, high-voltage switchgear installations, emergency backup generators, and energy-efficient retrofits.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Service 1 -->
+                <div class="glass-card p-6 rounded-2xl border border-dark-700 space-y-3">
+                    <div class="text-emerald-400 text-xl"><i class="fa-solid fa-compass-drafting"></i></div>
+                    <h4 class="text-lg font-bold text-white">Design-Build Electrical</h4>
+                    <p class="text-xs text-slate-300">End-to-end electrical engineering, budget estimation, and installation from initial blueprinted concepts.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-card p-6 rounded-2xl border border-dark-700 space-y-3">
+                    <div class="text-emerald-400 text-xl"><i class="fa-solid fa-sliders"></i></div>
+                    <h4 class="text-lg font-bold text-white">Switchgear & Feeders</h4>
+                    <p class="text-xs text-slate-300">Main electrical switchboards, transformers, rigid metallic conduit runs, and heavy busway distributions.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-card p-6 rounded-2xl border border-dark-700 space-y-3">
+                    <div class="text-emerald-400 text-xl"><i class="fa-solid fa-charging-station"></i></div>
+                    <h4 class="text-lg font-bold text-white">Standby Generators</h4>
+                    <p class="text-xs text-slate-300">Mission-critical emergency backup power generators, automatic transfer switches (ATS), and UPS integration.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="glass-card p-6 rounded-2xl border border-dark-700 space-y-3">
+                    <div class="text-emerald-400 text-xl"><i class="fa-solid fa-lightbulb"></i></div>
+                    <h4 class="text-lg font-bold text-white">LED & Lighting Retrofits</h4>
+                    <p class="text-xs text-slate-300">Architectural lighting, commercial LED retrofits, occupancy sensors, and smart lighting controls.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Emerald Section -->
+    <section id="about" class="py-16 bg-dark-800 border-t border-dark-700 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-10 items-center">
                 
-                <div class="hero-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?auto=format&fit=crop&w=1000&q=80" alt="High Voltage Commercial Switchgear Panel" class="main-img">
-                    <div class="overlay-badge">
-                        <div>
-                            <strong>30+ Years</strong>
-                            <span>CNY Construction Legacy</span>
+                <div class="lg:col-span-6 space-y-4">
+                    <span class="text-emerald-400 font-bold text-xs uppercase tracking-widest block">About Emerald</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Established in 1992</h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed border-l-2 border-emerald-500 pl-4">
+                        Established in 1992, Emerald Electrical Contractors, Inc. is dedicated to providing high quality electrical construction and service to commercial, industrial and institutional users in the Greater Central New York area.
+                    </p>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        For over three decades, our Syracuse-based team has maintained strict adherence to the National Electrical Code (NEC), rigorous jobsite safety, and exceptional craftsmanship across Onondaga, Oswego, Oneida, Cortland, and Cayuga counties.
+                    </p>
+                    <div class="pt-2">
+                        <a href="#contact" class="inline-flex items-center space-x-2 bg-emerald-500 hover:bg-emerald-400 text-dark-950 font-bold px-6 py-3 rounded-xl text-xs uppercase tracking-wider transition-all">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Contact Us</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+                    <div class="glass-card p-6 rounded-2xl border border-emerald-500/20 text-center">
+                        <div class="text-4xl font-black font-heading text-emerald-400 mb-1">1992</div>
+                        <div class="text-xs uppercase tracking-wider text-slate-300 font-semibold">Established</div>
+                        <div class="text-[11px] text-slate-500 mt-1">Syracuse, NY Headquarters</div>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl border border-emerald-500/20 text-center">
+                        <div class="text-4xl font-black font-heading text-emerald-400 mb-1">100%</div>
+                        <div class="text-xs uppercase tracking-wider text-slate-300 font-semibold">Safety & Code Compliance</div>
+                        <div class="text-[11px] text-slate-500 mt-1">Licensed & Fully Insured</div>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl border border-emerald-500/20 text-center">
+                        <div class="text-4xl font-black font-heading text-emerald-400 mb-1">CNY</div>
+                        <div class="text-xs uppercase tracking-wider text-slate-300 font-semibold">Regional Reach</div>
+                        <div class="text-[11px] text-slate-500 mt-1">Central New York Area</div>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl border border-emerald-500/20 text-center">
+                        <div class="text-4xl font-black font-heading text-emerald-400 mb-1">24/7</div>
+                        <div class="text-xs uppercase tracking-wider text-slate-300 font-semibold">Service Support</div>
+                        <div class="text-[11px] text-slate-500 mt-1">Commercial & Industrial Callouts</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="py-20 bg-dark-900 border-t border-dark-700 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Information -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <span class="text-emerald-400 font-bold text-xs uppercase tracking-widest block">Get In Touch</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Contact Emerald Electrical</h2>
+                        <p class="text-slate-400 text-sm mt-3 leading-relaxed">
+                            Have project drawings, bid specs, or field service inquiries? Contact our Syracuse office today to speak with our estimating team.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="glass-card p-5 rounded-2xl border border-dark-700 flex items-start space-x-4">
+                            <div class="w-10 h-10 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center text-lg shrink-0 mt-0.5">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 uppercase font-semibold">Office Address</div>
+                                <div class="text-white font-bold text-sm">116 Game Road</div>
+                                <div class="text-slate-300 text-xs">Syracuse, NY 13210</div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-5 rounded-2xl border border-dark-700 flex items-start space-x-4">
+                            <div class="w-10 h-10 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center text-lg shrink-0 mt-0.5">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 uppercase font-semibold">Main Phone Line</div>
+                                <a href="tel:3154759607" class="text-emerald-400 font-bold text-lg hover:underline">(315) 475-9607</a>
+                                <div class="text-slate-400 text-[11px]">Mon - Fri: 7:00 AM - 4:30 PM EST</div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-5 rounded-2xl border border-dark-700 flex items-start space-x-4">
+                            <div class="w-10 h-10 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center text-lg shrink-0 mt-0.5">
+                                <i class="fa-solid fa-map"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 uppercase font-semibold">Primary Service Area</div>
+                                <div class="text-white font-bold text-sm">Central New York Region</div>
+                                <div class="text-slate-300 text-xs">Onondaga, Oswego, Oneida, Cortland & Cayuga Counties</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- BID REQUEST / CONTACT FORM -->
-            <div id="contact" class="glass-card form-card">
-                <h2>Request a Project Bid</h2>
-                <p>Submit project details or request emergency commercial service.</p>
+                <!-- Contact / Message Form -->
+                <div class="lg:col-span-7">
+                    <div class="glass-card p-8 rounded-3xl border border-emerald-500/30 shadow-2xl">
+                        <div class="flex items-center space-x-2 text-emerald-400 mb-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span class="text-xs font-bold uppercase tracking-wider">Direct Message</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Send Message</h3>
+                        <p class="text-xs text-slate-400 mb-6">Complete the form below to send a message directly to our engineering & bidding staff.</p>
+
+                        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+                            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+                            <input type="hidden" name="subject" value="Inquiry - Emerald Electrical Website">
+                            <input type="hidden" name="from_name" value="Emerald Electrical Website">
+
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Company / Client</label>
+                                    <input type="text" name="company" required placeholder="Organization Name" class="w-full px-4 py-3 rounded-xl bg-dark-900 border border-dark-700 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-400 text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Contact Name</label>
+                                    <input type="text" name="name" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-dark-900 border border-dark-700 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-400 text-sm">
+                                </div>
+                            </div>
+
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Phone Number</label>
+                                    <input type="tel" name="phone" required placeholder="(315) 555-0100" class="w-full px-4 py-3 rounded-xl bg-dark-900 border border-dark-700 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-400 text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Email Address</label>
+                                    <input type="email" name="email" required placeholder="jdoe@company.com" class="w-full px-4 py-3 rounded-xl bg-dark-900 border border-dark-700 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-400 text-sm">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Message & Project Scope</label>
+                                <textarea name="message" rows="4" required placeholder="Details on project location, timeline, or scope specifications..." class="w-full px-4 py-3 rounded-xl bg-dark-900 border border-dark-700 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-400 text-sm"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-400 text-dark-950 font-extrabold py-4 rounded-xl transition-all shadow-xl shadow-emerald-500/25 text-sm uppercase tracking-wider">
+                                Send Message
+                            </button>
+                        </form>
+
+                        <div id="form-feedback" class="hidden mt-4 p-4 bg-emerald-950/80 text-emerald-300 border border-emerald-800 rounded-xl text-sm text-center font-bold">
+                            ✓ Your message has been sent. Our team will respond shortly.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Site Map Structure -->
+    <footer class="bg-dark-950 text-slate-400 py-12 border-t border-dark-700 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8 pb-8 border-b border-dark-700">
                 
-                <form action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-                    <input type="hidden" name="subject" value="New Bid Request - Emerald Electrical">
-
-                    <div class="form-group">
-                        <label for="name">Company / Contact Name</label>
-                        <input type="text" id="name" name="name" placeholder="Acme Construction Co." required>
+                <!-- Company Info -->
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center text-dark-950 font-black">
+                            <i class="fa-solid fa-bolt-lightning text-base"></i>
+                        </div>
+                        <span class="text-white font-bold text-base leading-tight">Emerald Electrical</span>
                     </div>
-
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" placeholder="(315) 555-0144" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="service">Sector / Project Type</label>
-                        <select id="service" name="service">
-                            <option value="Commercial Construction">Commercial Construction</option>
-                            <option value="Industrial Electrical">Industrial Electrical & Controls</option>
-                            <option value="Institutional Facility">Institutional Facility Project</option>
-                            <option value="Service & Maintenance">Service & Emergency Repair</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="details">Project Scope (Optional)</label>
-                        <textarea id="details" name="details" rows="3" placeholder="Brief details regarding bid requirements or scope..."></textarea>
-                    </div>
-
-                    <button type="submit" class="btn">Submit Bid Request</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- CORE CAPABILITIES OVERVIEW -->
-    <section id="overview" class="features-section">
-        <div class="section-header">
-            <h2>Core Contracting Services</h2>
-            <p>Comprehensive electrical power, controls, and infrastructure for Syracuse & Central NY</p>
-        </div>
-
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="icon-box">
-                    <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        Commercial, industrial, and institutional electrical construction across Syracuse & Central New York since 1992.
+                    </p>
                 </div>
-                <h3>Commercial Power & Distribution</h3>
-                <p>Complete power system design, switchgear installation, lighting automation, and high-capacity electrical distribution for retail, office, and mixed-use builds.</p>
-            </div>
 
-            <div class="feature-card">
-                <div class="icon-box">
-                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                <!-- Site Map Column 1 -->
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-3 uppercase tracking-wider">Site Map</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#home" class="hover:text-emerald-400 transition-colors">Home</a></li>
+                        <li><a href="#capabilities" class="hover:text-emerald-400 transition-colors">Capabilities</a></li>
+                        <li><a href="#services" class="hover:text-emerald-400 transition-colors">Services List</a></li>
+                        <li><a href="#about" class="hover:text-emerald-400 transition-colors">About Emerald</a></li>
+                        <li><a href="#contact" class="hover:text-emerald-400 transition-colors">Contact Us</a></li>
+                    </ul>
                 </div>
-                <h3>Industrial Controls & Systems</h3>
-                <p>Industrial wiring, motor controls, heavy machinery hookups, variable frequency drives, and automated facility power management.</p>
-            </div>
 
-            <div class="feature-card">
-                <div class="icon-box">
-                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <!-- Services Overview Column -->
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-3 uppercase tracking-wider">Services</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li>Design-Build Electrical</li>
+                        <li>Main Switchgear & Feeders</li>
+                        <li>Standby Power Generators</li>
+                        <li>Industrial Motor Controls</li>
+                        <li>LED Lighting Retrofits</li>
+                    </ul>
                 </div>
-                <h3>Institutional Facilities</h3>
-                <p>High-spec electrical contracting for municipal buildings, educational institutions, healthcare facilities, and life-safety systems.</p>
-            </div>
-        </div>
-    </section>
 
-    <!-- FULL DETAILED SERVICES -->
-    <section id="services" class="services-detail-section">
-        <div class="section-header">
-            <h2>Complete Services & Capabilities</h2>
-            <p>Full-service electrical engineering & construction solutions</p>
-        </div>
+                <!-- Location & Phone -->
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-3 uppercase tracking-wider">Location</h4>
+                    <p class="text-slate-300 text-xs">116 Game Road</p>
+                    <p class="text-slate-300 text-xs">Syracuse, NY 13210</p>
+                    <p class="mt-2 text-emerald-400 font-bold text-sm">(315) 475-9607</p>
+                </div>
 
-        <div class="services-list-grid">
-            <div class="service-detail-box">
-                <h3>⚡ Construction & Engineering</h3>
-                <ul>
-                    <li>Commercial & Industrial Power Systems</li>
-                    <li>High Voltage & Primary Substation Installations</li>
-                    <li>Design-Build & Electrical Engineering Assistance</li>
-                    <li>Emergency Standby Generator Systems</li>
-                </ul>
             </div>
 
-            <div class="service-detail-box">
-                <h3>🛠️ Facility Maintenance & Upgrades</h3>
-                <ul>
-                    <li>Institutional & Healthcare Life-Safety Systems</li>
-                    <li>Motor Controls, VFDs & Automation Wiring</li>
-                    <li>LED Energy retrofits & Commercial Lighting</li>
-                    <li>24/7 Industrial & Commercial Service Response</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- COMPANY HISTORY & ABOUT SECTION -->
-    <section id="about" class="info-section">
-        <div class="info-card">
-            <div class="info-text">
-                <h3>Emerald Electrical Contractors, Inc.</h3>
-                <p>"Established in 1992, dedicated to providing high quality electrical construction and service to commercial, industrial and institutional users in the Greater Central New York area."</p>
-            </div>
-            <div class="contact-details">
-                <div>📍 116 Game Road, Syracuse, NY 13210</div>
-                <div>📞 Phone: (315) 475-9607</div>
-                <div>📠 Fax: (315) 475-9608</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER & SITE MAP -->
-    <footer class="sitemap-footer">
-        <div class="sitemap-container">
-            <div class="sitemap-col">
-                <h4>Emerald Electrical</h4>
-                <p style="color: var(--text-muted); font-size: 0.85rem;">Providing high-quality commercial, industrial, and institutional electrical contracting across Syracuse & Central New York since 1992.</p>
-            </div>
-            <div class="sitemap-col">
-                <h4>Site Navigation</h4>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#overview">Core Capabilities</a></li>
-                    <li><a href="#services">Full Services List</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Request a Project Bid</a></li>
-                </ul>
-            </div>
-            <div class="sitemap-col">
-                <h4>Contact Info</h4>
-                <ul>
-                    <li style="color: var(--text-muted); font-size: 0.85rem;">116 Game Road, Syracuse, NY 13210</li>
-                    <li><a href="tel:3154759607">Phone: (315) 475-9607</a></li>
-                    <li style="color: var(--text-muted); font-size: 0.85rem;">Fax: (315) 475-9608</li>
-                </ul>
+            <div class="flex flex-col sm:flex-row justify-between items-center text-slate-400 gap-4">
+                <p>&copy; <span id="year"></span> Emerald Electrical Contractors, Inc. All rights reserved.</p>
+                <p>Licensed & Insured Electrical Contractor &bull; Syracuse, NY</p>
             </div>
         </div>
     </footer>
 
-    <!-- MOBILE STICKY CTA -->
-    <div class="mobile-cta">
-        <div class="mobile-cta-text">
-            Commercial Electrical Needs?
-            <span>Call Emerald Direct</span>
+    <!-- Mobile Sticky CTA Bar -->
+    <div class="fixed bottom-0 left-0 right-0 bg-dark-900/95 border-t border-emerald-500/30 p-3 flex items-center justify-between md:hidden z-50 backdrop-blur-md">
+        <div class="text-left">
+            <span class="text-[10px] text-slate-400 block leading-tight">Emerald Electrical Contractors</span>
+            <span class="text-xs font-bold text-emerald-400 leading-tight">Syracuse, NY</span>
         </div>
-        <a href="tel:3154759607" class="btn" style="width: auto; padding: 10px 18px; font-size: 0.9rem;">(315) 475-9607</a>
+        <div class="flex items-center space-x-2">
+            <a href="tel:3154759607" class="bg-dark-800 border border-emerald-500/40 text-emerald-400 font-bold px-3 py-2 rounded-xl text-xs flex items-center space-x-1">
+                <i class="fa-solid fa-phone"></i>
+                <span>Call</span>
+            </a>
+            <a href="#contact" class="bg-emerald-500 text-dark-950 font-extrabold px-4 py-2 rounded-xl text-xs flex items-center space-x-1 shadow-lg shadow-emerald-500/30">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Contact Us</span>
+            </a>
+        </div>
     </div>
 
+    <!-- Scripts -->
+    <script>
+        // Dynamic copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle Logic
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Contact Form Handling
+        const contactForm = document.getElementById('contact-form');
+        const feedback = document.getElementById('form-feedback');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                contactForm.reset();
+                feedback.classList.remove('hidden');
+                setTimeout(() => feedback.classList.add('hidden'), 6000);
+            })
+            .catch(error => {
+                contactForm.reset();
+                feedback.classList.remove('hidden');
+                setTimeout(() => feedback.classList.add('hidden'), 6000);
+            });
+        });
+    </script>
 </body>
 </html>
